@@ -1,0 +1,9 @@
+.mi-nav-color {
+    --bs-nav-link-color: #495057;
+    --bs-nav-link-hover-color: #0d6efd;
+}
+
+.mi-px-075 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+}
