@@ -1,9 +1,88 @@
+.mi-vh-header {
+    height: auto;
+}
+
+.mi-vh-resta-h {
+    height: auto;
+}
+
+.mi-vh-tabulador {
+    height: auto;
+}
+
+.mi-vh-resta-ht {
+    height: auto;
+}
+
 .mi-nav-color {
-    --bs-nav-link-color: #495057;
+    /* Bootstrap $gray-800 */
+    --bs-nav-link-color: #343a40;
+    /* Bootstrap $blue-200 */
+    --bs-nav-link-hover-color: #9ec5fe;
+}
+
+.mi-nav-activo {
+    /* Bootstrap $blue */
+    --bs-nav-link-color: #0d6efd;
+    /* Bootstrap $blue */
     --bs-nav-link-hover-color: #0d6efd;
+}
+
+.mi-tab-activo {
+    /* Bootstrap $blue */
+    color: #0d6efd !important;
 }
 
 .mi-px-075 {
     padding-left: 0.75rem !important;
     padding-right: 0.75rem !important;
+}
+
+/* Animación fluida para el ancho del sidebar */
+.sidebar-transition {
+    transition: margin-top 0.3s ease-in-out, min-height 0.3s ease-in-out, max-height 0.3s ease-in-out;
+    min-height: 255px;
+    max-height: 255px;
+}
+
+/* Clase que aplicará JavaScript para ocultar la barra */
+.sidebar-hidden {
+    margin-top: -255px !important;
+}
+
+/* Bootstrap breakpoint md (768px) */
+@media (min-width: 768px) {
+    .mi-vh-header {
+        height: 50px;
+    }
+
+    .mi-vh-resta-h {
+        /* Resta mi-vh-header */
+        min-height: calc(100vh - 50px);
+        max-height: calc(100vh - 50px);
+        height: calc(100vh - 50px);
+    }
+
+    .mi-vh-tabulador {
+        height: 50px;
+    }
+
+    .mi-vh-resta-ht {
+        /* Resta mi-vh-header y mi-vh-tabulador */
+        min-height: calc(100vh - 50px - 50px);
+        max-height: calc(100vh - 50px - 50px);
+        height: calc(100vh - 50px - 50px);
+    }
+
+    /* Animación fluida para el ancho del sidebar */
+    .sidebar-transition {
+        transition: margin-left 0.3s ease-in-out, min-width 0.3s ease-in-out, max-width 0.3s ease-in-out;
+        min-width: 255px;
+        max-width: 255px;
+    }
+
+    /* Clase que aplicará JavaScript para ocultar la barra */
+    .sidebar-hidden {
+        margin-left: -255px !important;
+    }
 }
