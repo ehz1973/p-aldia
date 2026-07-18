@@ -38,11 +38,10 @@
     padding-right: 0.75rem !important;
 }
 
-/* Animación fluida para el ancho del sidebar */
+/* Animación fluida para el alto del sidebar */
 .sidebar-transition {
-    transition: margin-top 0.3s ease-in-out, min-height 0.3s ease-in-out, max-height 0.3s ease-in-out;
-    min-height: 255px;
-    max-height: 255px;
+    height: 255px;
+    transition: margin-top 0.3s ease-in-out;
 }
 
 /* Clase que aplicará JavaScript para ocultar la barra */
@@ -58,8 +57,6 @@
 
     .mi-vh-resta-h {
         /* Resta mi-vh-header */
-        min-height: calc(100vh - 50px);
-        max-height: calc(100vh - 50px);
         height: calc(100vh - 50px);
     }
 
@@ -69,16 +66,14 @@
 
     .mi-vh-resta-ht {
         /* Resta mi-vh-header y mi-vh-tabulador */
-        min-height: calc(100vh - 50px - 50px);
-        max-height: calc(100vh - 50px - 50px);
         height: calc(100vh - 50px - 50px);
     }
 
     /* Animación fluida para el ancho del sidebar */
     .sidebar-transition {
-        transition: margin-left 0.3s ease-in-out, min-width 0.3s ease-in-out, max-width 0.3s ease-in-out;
-        min-width: 255px;
-        max-width: 255px;
+        margin-top: 0px !important;
+        width: 255px;
+        transition: margin-left 0.3s ease-in-out;
     }
 
     /* Clase que aplicará JavaScript para ocultar la barra */

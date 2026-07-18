@@ -19,12 +19,8 @@
 
   <header class="mi-vh-header">
     <!-- 1. Barra de Navegación Superior -->
-    <nav class="navbar navbar-dark bg-dark px-3 mi-vh-header">
+    <nav class="navbar navbar-dark bg-dark mi-px-075 mi-vh-header">
       <div class="d-flex align-items-center">
-        <!-- BOTÓN PARA COLAPSAR -->
-        <button id="sidebarToggle" class="btn btn-outline-light me-3" type="button">
-          &#9776; <!-- Icono de hamburguesa -->
-        </button>
         <span class="navbar-brand mb-0 h1">Mi Panel</span>
       </div>
     </nav>
@@ -38,7 +34,7 @@
       class="col-12 col-sm-auto bg-light border-bottom border-end d-flex flex-row justify-content-between flex-sm-column overflow-y-auto mi-vh-resta-h"
       style="z-index: 999;">
       <nav class="nav flex-row flex-sm-column mb-auto mx-0 mx-sm-auto text-center mi-nav-color">
-        <a href="#" class="nav-link rounded-0 pb-md-0 mi-px-075 mi-nav-activo" title="" data-bs-toggle="tooltip"
+        <a href="#" id="home-link" class="nav-link rounded-0 pb-md-0 mi-px-075 mi-nav-activo" title="" data-bs-toggle="tooltip"
           data-bs-placement="right" data-bs-original-title="Home">
           <i class="bi-house fs-4"></i>
         </a>
@@ -67,55 +63,61 @@
     </aside>
     <!-- 3.2. Barra Lateral (Sidebar) -->
     <aside id="sidebar"
-      class="col-12 col-sm-auto bg-light border-bottom border-end d-flex flex-column px-0 py-1 sidebar-transition overflow-y-auto mi-vh-resta-h">
+      class="col-12 col-sm-auto bg-light border-bottom border-end d-flex flex-column px-2 pt-0 pb-2 overflow-y-auto mi-vh-resta-h sidebar-transition">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <strong>Usuario</strong>
+        <button type="button" id="boton-home-link" class="btn px-0"><i class="bi bi-arrow-bar-up fs-4 d-sm-none"></i><i class="bi bi-arrow-bar-left fs-4 d-none d-sm-block"></i></button>
+      </div>
+
       <ul class="nav flex-column mb-auto mi-nav-color">
 
         <!-- Elemento simple sin submenú -->
-        <li class="nav-item mb-1">
-          <a href="#" class="nav-link">Inicio</a>
+        <li class="nav-item">
+          <a href="#" class="nav-link px-0">Actividades</a>
         </li>
 
         <!-- Elemento CON SUBMENÚ 1 (Proyectos) -->
-        <li class="nav-item mb-1">
+        <li class="nav-item">
           <!-- El botón que dispara el colapso vertical -->
-          <a href="#submenuProyectos" class="nav-link link-dark d-flex justify-content-between align-items-center"
+          <a href="#submenuProyectos" class="nav-link link-dark px-0 d-flex align-items-center"
             data-bs-toggle="collapse" role="button" aria-expanded="false">
             <span>Proyectos</span>
             <!-- Flecha indicadora pequeña -->
-            <small class="text-muted">&#9662;</small>
+            <small class="text-muted ps-2">&#9662;</small>
           </a>
 
           <!-- Contenedor colapsable del submenú -->
           <div class="collapse ps-3 mt-1" id="submenuProyectos">
             <ul class="nav flex-column border-start ps-2 mi-nav-color">
               <li class="nav-item">
-                <a href="#" class="nav-link py-1 small mi-nav-activo">Activos</a>
+                <a href="#" class="nav-link px-0 py-1 small mi-nav-activo">Activos</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link py-1 small">Archivados</a>
+                <a href="#" class="nav-link px-0 py-1 small">Archivados</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link py-1 small">Nueva Categoría</a>
+                <a href="#" class="nav-link px-0 py-1 small">Nueva Categoría</a>
               </li>
             </ul>
           </div>
         </li>
 
         <!-- Elemento CON SUBMENÚ 2 (Configuración) -->
-        <li class="nav-item mb-1">
-          <a href="#submenuConfig" class="nav-link link-dark d-flex justify-content-between align-items-center"
+        <li class="nav-item">
+          <a href="#submenuConfig" class="nav-link link-dark px-0 d-flex align-items-center"
             data-bs-toggle="collapse" role="button" aria-expanded="false">
             <span>Configuración</span>
-            <small class="text-muted">&#9662;</small>
+            <small class="text-muted ps-2">&#9662;</small>
           </a>
 
           <div class="collapse ps-3 mt-1" id="submenuConfig">
             <ul class="nav flex-column border-start ps-2 mi-nav-color">
               <li class="nav-item">
-                <a href="#" class="nav-link py-1 small">Perfil</a>
+                <a href="#" class="nav-link px-0 py-1 small">Perfil</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link py-1 small">Seguridad</a>
+                <a href="#" class="nav-link px-0 py-1 small">Seguridad</a>
               </li>
             </ul>
           </div>
