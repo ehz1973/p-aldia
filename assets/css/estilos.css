@@ -1,3 +1,16 @@
+:root {
+    /* Bootstrap $gray-800 */
+    --mi-gris-oscuro: #343a40;
+    /* Bootstrap $blue-200 */
+    --mi-azul-claro: #9ec5fe;
+    /* Bootstrap $blue */
+    --mi-azul: #0d6efd;
+    --mi-alto-header: 50px;
+    --mi-alto-tabulador: 50px;
+    --mi-alto-barra: 193px;
+    --mi-ancho-barra: 250px;
+}
+
 .mi-vh-header {
     height: auto;
 }
@@ -15,22 +28,17 @@
 }
 
 .mi-nav-color {
-    /* Bootstrap $gray-800 */
-    --bs-nav-link-color: #343a40;
-    /* Bootstrap $blue-200 */
-    --bs-nav-link-hover-color: #9ec5fe;
+    --bs-nav-link-color: var(--mi-gris-oscuro);
+    --bs-nav-link-hover-color: var(--mi-azul-claro);
 }
 
 .mi-nav-activo {
-    /* Bootstrap $blue */
-    --bs-nav-link-color: #0d6efd;
-    /* Bootstrap $blue */
-    --bs-nav-link-hover-color: #0d6efd;
+    --bs-nav-link-color: var(--mi-azul);
+    --bs-nav-link-hover-color: var(--mi-azul);
 }
 
 .mi-tab-activo {
-    /* Bootstrap $blue */
-    color: #0d6efd !important;
+    color: var(--mi-azul) !important;
 }
 
 .mi-px-075 {
@@ -40,44 +48,43 @@
 
 /* Animación fluida para el alto del sidebar */
 .sidebar-transition {
-    height: 255px;
+    height: var(--mi-alto-barra);
     transition: margin-top 0.3s ease-in-out;
 }
 
 /* Clase que aplicará JavaScript para ocultar la barra */
 .sidebar-hidden {
-    margin-top: -255px !important;
+    margin-top: calc(-1 * var(--mi-alto-barra)) !important;
 }
 
 /* Bootstrap breakpoint md (768px) */
 @media (min-width: 768px) {
     .mi-vh-header {
-        height: 50px;
+        height: var(--mi-alto-header);
     }
 
     .mi-vh-resta-h {
-        /* Resta mi-vh-header */
-        height: calc(100vh - 50px);
+        height: calc(100vh - var(--mi-alto-header));
     }
 
     .mi-vh-tabulador {
-        height: 50px;
+        height: var(--mi-alto-tabulador);
     }
 
     .mi-vh-resta-ht {
-        /* Resta mi-vh-header y mi-vh-tabulador */
-        height: calc(100vh - 50px - 50px);
+        height: calc(100vh - var(--mi-alto-header) - var(--mi-alto-tabulador));
     }
 
     /* Animación fluida para el ancho del sidebar */
     .sidebar-transition {
+        /* La propiedad margin-top debe volver a cero */
         margin-top: 0px !important;
-        width: 255px;
+        width: var(--mi-ancho-barra);
         transition: margin-left 0.3s ease-in-out;
     }
 
     /* Clase que aplicará JavaScript para ocultar la barra */
     .sidebar-hidden {
-        margin-left: -255px !important;
+        margin-left: calc(-1 * var(--mi-ancho-barra)) !important;
     }
 }
