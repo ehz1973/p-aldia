@@ -11,6 +11,11 @@
     --mi-ancho-barra: 250px;
 }
 
+/* Para usar iconos Bootstrap con código HTML */
+.mi-font-iconos {
+    font-family: "bootstrap-icons";
+}
+
 .mi-vh-header {
     height: auto;
 }
