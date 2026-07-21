@@ -1,0 +1,2 @@
+180726 Falta mejorar con tooltips, mejorar contraste de colores en movil y generar clase gestorvisual
+190726 El texto en sidebar de itemes y en tabuladores debe ser mas pequeno (tipo VSC) en main se mantiene
