@@ -1,2 +1,9 @@
+
+*** Probar en celular (gh-pages) ***
+
 180726 Falta mejorar con tooltips, mejorar contraste de colores en movil y generar clase gestorvisual
 190726 El texto en sidebar de itemes y en tabuladores debe ser mas pequeno (tipo VSC) en main se mantiene
+210726 Falta crear grupos de itemes y luego enlazar los itemes de actividad con su tabulador y contenido
+210726 En el manejo de los tabuladores existe la posibilidad de cerrar el tabulador activo, en ese caso otro
+tabulador - contenido - item pasa a estar activo o ninguno (cierre de todos los tabuladores)
+210726 Por ahora solo un tabulador activo deberia tener la posibilidad de ser cerrado (icono X)

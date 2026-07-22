@@ -27,16 +27,49 @@ class GestorVisual {
                                 {
                                     tipo: "grupo",
                                     texto: "Grupo 1",
-                                    itemes: []
+                                    itemes: [
+                                        {
+                                            tipo: "actividad",
+                                            texto: "Actividad 2",
+                                            activo: false
+                                        },
+                                        {
+                                            tipo: "actividad",
+                                            texto: "Actividad 3",
+                                            activo: false
+                                        },
+                                        {
+                                            tipo: "grupo",
+                                            texto: "Grupo 2",
+                                            itemes: [
+                                                {
+                                                    tipo: "actividad",
+                                                    texto: "Actividad 4",
+                                                    activo: false
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     tipo: "grupo",
-                                    texto: "Grupo 2",
-                                    itemes: []
+                                    texto: "Grupo 3",
+                                    itemes: [
+                                        {
+                                            tipo: "actividad",
+                                            texto: "Actividad 5",
+                                            activo: false
+                                        },
+                                        {
+                                            tipo: "actividad",
+                                            texto: "Actividad 6",
+                                            activo: false
+                                        }
+                                    ]
                                 },
                                 {
                                     tipo: "actividad",
-                                    texto: "Actividad 2",
+                                    texto: "Actividad 7",
                                     activo: false
                                 }
                             ]
@@ -98,7 +131,7 @@ class GestorVisual {
 
     static cargar(elementos = this.esquema, padre = document.getElementById("sidebar-iconos")) {
         const sidebarItemes = document.getElementById("sidebar-itemes");
-        let contenedorNav, contenedorDiv, linea, enlace, texto, boton;
+        let contenedorNav, contenedorDiv, itemLista, linea, enlace, texto, boton;
 
         // Lógica para cargar el esquema
         if (elementos.length > 0) {
@@ -121,7 +154,7 @@ class GestorVisual {
                         enlace.dataset.relId = `id-gen${this.genId++}`;
                         enlace.innerHTML = `<i class="bi ${elemento.icono} fs-4"></i>`;
                         contenedorDiv = document.createElement("div");
-                        // Agregar id igual al atributo data- del enlace
+                        // Agregar id igual al atributo data-rel-id del enlace
                         contenedorDiv.id = enlace.dataset.relId;
                         contenedorDiv.classList.add("d-flex", "flex-column", "flex-grow-1", "d-none");
                         if (elemento.activo) {
@@ -185,6 +218,69 @@ class GestorVisual {
                         contenedorNav.classList.add("nav", "flex-column", "mb-auto", "mi-nav-color");
                         GestorVisual.cargar(elemento.itemes, contenedorNav);
                         padre.appendChild(contenedorNav);
+                        break;
+                    case "actividad":
+                        console.log(`Cargando item: ${elemento.texto}`);
+                        itemLista = document.createElement("li");
+                        itemLista.classList.add("nav-item");
+                        enlace = document.createElement("a");
+                        enlace.href = "#";
+                        enlace.id = `id-gen${this.genId++}`;
+                        enlace.classList.add("nav-link", "px-0", "py-2", "py-md-1", "d-flex", "justify-content-start");
+                        // Agregar atributo data-rel-id al enlace
+                        enlace.dataset.relId = `id-gen${this.genId++}`;
+                        enlace.innerHTML = `<i class="bi bi-dot text-muted"></i><span>${elemento.texto}</span>`;
+
+                        // Crear y relacionar el tabulador y el contenido
+
+                        if (elemento.activo) {
+                            enlace.classList.add("mi-nav-activo");
+                            // contenedorDiv.classList.remove("d-none");
+                            this.itemActivo = enlace;
+                            // this.menuActivo = contenedorDiv;
+                        }
+                        enlace.addEventListener("click", function (evento) {
+                            if (evento.currentTarget.classList.contains("mi-nav-activo")) {
+                                // sidebarItemes.classList.toggle("sidebar-hidden");
+                            } else {
+                                // sidebarItemes.classList.remove("sidebar-hidden");
+                                GestorVisual.itemActivo.classList.remove("mi-nav-activo");
+                                // GestorVisual.menuActivo.classList.add("d-none");
+                                evento.currentTarget.classList.add("mi-nav-activo");
+                                // const contenedorRel = document.getElementById(evento.currentTarget.dataset.relId);
+                                // contenedorRel.classList.remove("d-none");
+                                GestorVisual.itemActivo = evento.currentTarget;
+                                // GestorVisual.menuActivo = contenedorRel;
+                            }
+                        });
+
+                        itemLista.appendChild(enlace);
+                        padre.appendChild(itemLista);
+                        break;
+                    case "grupo":
+                        console.log(`Cargando gupo: ${elemento.texto}`);
+                        itemLista = document.createElement("li");
+                        itemLista.classList.add("nav-item");
+                        enlace = document.createElement("a");
+                        const relId = this.genId++;
+                        enlace.href = `#${relId}`;
+                        enlace.classList.add("nav-link", "link-dark", "px-0", "py-2", "py-md-1", "d-flex", "align-items-center");
+                        // Agregar atributos para colapsar submenu
+                        enlace.dataset.bsToggle = "collapse";
+                        enlace.role = "button";
+                        enlace.ariaExpanded = "false";
+                        enlace.innerHTML = `<i class="bi bi-dot text-muted"></i><span>${elemento.texto}</span>
+              <small class="text-muted ps-2">&#9662;</small>`;
+                        itemLista.append(enlace);
+                        contenedorDiv = document.createElement("div");
+                        contenedorDiv.id = relId;
+                        contenedorDiv.classList.add("collapse", "ps-1", "mb-1");
+                        contenedorNav = document.createElement("ul");
+                        contenedorNav.classList.add("nav", "flex-column", "border-start", "ps-1", "mi-nav-color");
+                        GestorVisual.cargar(elemento.itemes, contenedorNav);
+                        contenedorDiv.appendChild(contenedorNav);
+                        itemLista.appendChild(contenedorDiv);
+                        padre.appendChild(itemLista);
                         break;
                     case "itemes-inf":
                         console.log("Cargando itemes inferiores...");
